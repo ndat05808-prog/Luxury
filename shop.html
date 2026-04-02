@@ -12,9 +12,9 @@
       content="pre-loved luxury, shopping, fundraising, fashion, online store"
     />
     <meta name="author" content="LuxeFund Community" />
-    <meta name="theme-color" content="#0b1220" />
+    <meta name="theme-color" content="#080e1a" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Fundraising Shop • LuxeFund Community" />
+    <meta property="og:title" content="Fundraising Shop &bull; LuxeFund Community" />
     <meta
       property="og:description"
       content="Shop pre-loved luxury items and support fundraising goals."
@@ -22,14 +22,13 @@
     <meta property="og:url" content="https://luxefund.community/shop.html" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="robots" content="index, follow" />
-    <title>Fundraising Shop • LuxeFund Community</title>
+    <title>Fundraising Shop &bull; LuxeFund Community</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="canonical" href="https://luxefund.community/shop.html" />
   </head>
   <body>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
     <a class="skiplink" href="#main">Skip to content</a>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+
     <header class="siteheader">
       <div class="container">
         <div class="headerrow">
@@ -41,7 +40,7 @@
             <div class="brandbadge" aria-hidden="true"></div>
             <div class="brandname">
               <strong>LuxeFund Community</strong>
-              <span>Luxury lovers • Fundraising</span>
+              <span>Luxury lovers &bull; Fundraising</span>
             </div>
           </a>
 
@@ -75,7 +74,7 @@
             </button>
           </div>
         </div>
-        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+
         <nav id="nav" class="nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
@@ -86,17 +85,16 @@
         </nav>
       </div>
     </header>
-    <!-- Main page content starts here -->
+
     <main id="main" class="container">
-      <!-- Shop section displays pre-loved products where part of each purchase supports the fundraising goal -->
       <section class="section" aria-label="Shop">
         <div class="sectionhead">
           <h2>Fundraising Shop</h2>
-          <p>Pre-loved luxury- a % supports the fund.</p>
+          <p>Pre-loved luxury &mdash; a % supports the fund.</p>
         </div>
 
         <p class="muted">Curated pre-loved items. No brand logos are used.</p>
-        <!-- Filter controls allow users to refine products by brand, condition, sort order, and keyword search -->
+
         <div class="formrow mt12" aria-label="Filters">
           <div class="field">
             <label for="filterbrand">Brand</label>
@@ -124,7 +122,6 @@
               <option value="price_asc">Price: Low to High</option>
               <option value="price_desc">Price: High to Low</option>
             </select>
-            <span class="help">Simple sorting for a real shop feel.</span>
           </div>
 
           <div class="field">
@@ -134,24 +131,19 @@
               type="search"
               placeholder="Try: Gucci, sneaker, tote..."
             />
-            <span class="help">Search by product name or brand.</span>
           </div>
         </div>
-        <!-- Action row provides a quick tip for using the modal and a button to open the shopping cart -->
+
         <div class="rowbetween mt12">
-          <span class="badge">Tip: click “View details” to open the modal</span>
+          <span class="badge">Tip: click &ldquo;View details&rdquo; to open the modal</span>
           <button class="btn" id="opencart" type="button">Open cart</button>
         </div>
 
         <hr class="sep" />
 
-        <div id="productlist" class="cardgrid" aria-label="Products">
-          <!-- Product cards are rendered dynamically by shop.js -->
-        </div>
+        <div id="productlist" class="cardgrid" aria-label="Products"></div>
       </section>
 
-      <!-- Modal -->
-      <!-- Product details modal shows extended information without leaving the current page -->
       <div
         id="modalbackdrop"
         class="modalbackdrop"
@@ -183,18 +175,18 @@
             </div>
 
             <div class="right">
-              <p id="modaldesc" class="muted">—</p>
-              <!-- Key product information includes brand, condition, size, fundraising impact, and price -->
+              <p id="modaldesc" class="muted">&mdash;</p>
+
               <div class="kv" aria-label="Key info">
-                <div><span>Brand</span><strong id="modalbrand">—</strong></div>
+                <div><span>Brand</span><strong id="modalbrand">&mdash;</strong></div>
                 <div>
-                  <span>Condition</span><strong id="modalcondition">—</strong>
+                  <span>Condition</span><strong id="modalcondition">&mdash;</strong>
                 </div>
-                <div><span>Size</span><strong id="modalsize">—</strong></div>
+                <div><span>Size</span><strong id="modalsize">&mdash;</strong></div>
                 <div>
-                  <span>Fund impact</span><strong id="modalimpact">—</strong>
+                  <span>Fund impact</span><strong id="modalimpact">&mdash;</strong>
                 </div>
-                <div><span>Price</span><strong id="modalprice">—</strong></div>
+                <div><span>Price</span><strong id="modalprice">&mdash;</strong></div>
               </div>
 
               <div class="herocta">
@@ -205,32 +197,29 @@
               </div>
 
               <p class="help mt12">
-                Checkout will add the “fund impact” amount to the total fund.
+                Checkout will add the &ldquo;fund impact&rdquo; amount to the total fund.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Slide-out cart drawer allows users to review items and complete the checkout process -->
       <aside id="cartdrawer" class="drawer" aria-label="Cart drawer">
         <div class="drawerheader">
           <strong>Your cart</strong>
           <button id="closecart" class="btn" type="button">Close</button>
         </div>
-        <!-- Cart items are inserted dynamically by JavaScript -->
-        <div id="cartitems" class="drawercontent" aria-label="Cart items">
-          <!-- shop.js renders -->
-        </div>
+
+        <div id="cartitems" class="drawercontent" aria-label="Cart items"></div>
 
         <div class="drawerfooter">
           <div class="rowbetween">
             <span class="muted">Total</span>
-            <strong id="carttotal">0 ₫</strong>
+            <strong id="carttotal">0 &#8363;</strong>
           </div>
           <div class="rowbetween">
             <span class="muted">Will contribute</span>
-            <strong id="cartdonated">0 ₫</strong>
+            <strong id="cartdonated">0 &#8363;</strong>
           </div>
           <button id="checkout" class="btn primary" type="button">
             Checkout
@@ -238,31 +227,30 @@
           <p class="help">Tip: open Donate page to see totals update.</p>
         </div>
       </aside>
-      <!-- Audio feedback is used to enhance interaction when cart actions occur -->
+
       <audio
         id="notifysound"
         src="assets/media/notify.wav"
         preload="auto"
       ></audio>
     </main>
-    <!-- Shared footer with quick links, page label, and legal/community information -->
+
     <footer class="footer">
       <div class="container">
-        <hr class="sep" />
-        <div class="rowbetween">
-          <span class="muted">© 2026 LuxeFund Community</span>
+        <div class="footerbottom">
+          <span class="muted">&copy; 2026 LuxeFund Community</span>
           <span class="muted">Shop page</span>
         </div>
       </div>
     </footer>
-    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+
     <div
       id="toastwrap"
       class="toastwrap"
       aria-live="polite"
       aria-atomic="true"
     ></div>
-    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/shop.js" defer></script>
   </body>

@@ -12,22 +12,22 @@
       content="events, workshops, swap, community activities, fashion"
     />
     <meta name="author" content="LuxeFund Community" />
+    <meta name="theme-color" content="#080e1a" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Events • LuxeFund Community" />
+    <meta property="og:title" content="Events &bull; LuxeFund Community" />
     <meta
       property="og:description"
       content="Join LuxeFund Community events and workshops."
     />
     <meta property="og:url" content="https://luxefund.community/events.html" />
     <meta name="robots" content="index, follow" />
-    <title>Events • LuxeFund Community</title>
+    <title>Events &bull; LuxeFund Community</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="canonical" href="https://luxefund.community/events.html" />
   </head>
   <body>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
     <a class="skiplink" href="#main">Skip to content</a>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+
     <header class="siteheader">
       <div class="container">
         <div class="headerrow">
@@ -39,7 +39,7 @@
             <div class="brandbadge" aria-hidden="true"></div>
             <div class="brandname">
               <strong>LuxeFund Community</strong>
-              <span>Luxury lovers • Fundraising</span>
+              <span>Luxury lovers &bull; Fundraising</span>
             </div>
           </a>
 
@@ -73,7 +73,7 @@
             </button>
           </div>
         </div>
-        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+
         <nav id="nav" class="nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
@@ -84,15 +84,14 @@
         </nav>
       </div>
     </header>
-    <!-- Main page content starts here -->
+
     <main id="main" class="container">
-      <!-- Events section introduces upcoming community activities and interactive event browsing -->
       <section class="section" aria-label="Events">
         <div class="sectionhead">
           <h2>Events</h2>
-          <p>Simple filters + “Interested” button.</p>
+          <p>Simple filters + &ldquo;Interested&rdquo; button.</p>
         </div>
-        <!-- Event filters let users narrow results by type, search term, and date order -->
+
         <div class="formrow mt12" aria-label="Event filters">
           <div class="field">
             <label for="etype">Event type</label>
@@ -124,28 +123,27 @@
         </div>
 
         <hr class="sep" />
-        <!-- Event cards are rendered dynamically by events.js based on filter and sort choices -->
+
         <div id="eventlist" class="cardgrid" aria-label="Event list"></div>
       </section>
     </main>
-    <!-- Shared footer with quick links, page label, and legal/community information -->
+
     <footer class="footer">
       <div class="container">
-        <hr class="sep" />
-        <div class="rowbetween">
-          <span class="muted">© 2026 LuxeFund Community</span>
+        <div class="footerbottom">
+          <span class="muted">&copy; 2026 LuxeFund Community</span>
           <span class="muted">Events page</span>
         </div>
       </div>
     </footer>
-    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+
     <div
       id="toastwrap"
       class="toastwrap"
       aria-live="polite"
       aria-atomic="true"
     ></div>
-    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/events.js" defer></script>
   </body>
