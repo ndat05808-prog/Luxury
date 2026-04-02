@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Contact LuxeFund Community. Reach out with questions, feedback, or collaboration proposals. Email, phone, and office hours available."
+    />
+    <meta name="keywords" content="contact, support, feedback, collaboration" />
+    <meta name="author" content="LuxeFund Community" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact • LuxeFund Community" />
+    <meta
+      property="og:description"
+      content="Get in touch with LuxeFund Community for questions and support."
+    />
+    <meta property="og:url" content="https://luxefund.community/contact.html" />
+    <meta name="robots" content="index, follow" />
+    <title>Contact • LuxeFund Community</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="canonical" href="https://luxefund.community/contact.html" />
+  </head>
+  <body>
+    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+    <a class="skiplink" href="#main">Skip to content</a>
+    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+    <header class="siteheader">
+      <div class="container">
+        <div class="headerrow">
+          <a
+            class="brand"
+            href="index.html"
+            aria-label="LuxeFund Community - Home"
+          >
+            <div class="brandbadge" aria-hidden="true"></div>
+            <div class="brandname">
+              <strong>LuxeFund Community</strong>
+              <span>Luxury lovers • Fundraising</span>
+            </div>
+          </a>
+
+          <div class="navwrap">
+            <a
+              class="btn ghost"
+              href="shop.html"
+              aria-label="Open fundraising shop"
+            >
+              Cart
+              <span id="cartcount" class="badge" aria-label="Items in cart"
+                >0</span
+              >
+            </a>
+            <button
+              id="themetoggle"
+              class="btn ghost"
+              type="button"
+              aria-pressed="false"
+            >
+              Light mode
+            </button>
+            <button
+              id="navtoggle"
+              class="navtoggle"
+              type="button"
+              aria-controls="nav"
+              aria-expanded="false"
+            >
+              Menu
+            </button>
+          </div>
+        </div>
+        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+        <nav id="nav" class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="shop.html">Fundraising Shop</a>
+          <a href="fundraising.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main page content starts here -->
+    <main id="main" class="container">
+      <!-- Contact information section provides communication details, office hours, and meeting location -->
+      <section class="section" aria-label="Contact info">
+        <div class="sectionhead">
+          <h2>Contact</h2>
+          <p>Questions, feedback, or collaboration.</p>
+        </div>
+        <!-- Information cards make the contact details easier to scan visually -->
+        <div class="cardgrid">
+          <article class="card">
+            <img src="./assets/img/info.avif" alt="Info" />
+            <div class="cardbody">
+              <h3 class="cardtitle">Info</h3>
+              <p class="muted">
+                Email: luxefund.community@example.com<br />
+                Hotline: +84 900 000 000<br />
+                Location: Campus / Club room
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./assets/img/visit.avif" alt="Office hours " />
+            <div class="cardbody">
+              <h3 class="cardtitle">Office hours</h3>
+              <p class="muted">
+                Mon-Fri: 09:00-17:00<br />
+                Sat: 09:00-12:00<br />
+                Sun: Closed
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./assets/img/hinhtrai.avif" alt="Map" />
+            <div class="cardbody">
+              <h3 class="cardtitle">Map</h3>
+              <p class="muted">Campus map and meeting point information.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Contact form allows users to send a message and receive client-side validation feedback -->
+      <section class="section" aria-label="Contact form">
+        <div class="sectionhead">
+          <h2>Send a message</h2>
+          <p>Client-side validation only.</p>
+        </div>
+
+        <form id="contactform" novalidate>
+          <div class="formrow">
+            <div class="field">
+              <label for="cname">Name</label>
+              <input id="cname" type="text" placeholder="e.g., Sam" required />
+            </div>
+
+            <div class="field">
+              <label for="cemail">Email</label>
+              <input
+                id="cemail"
+                type="email"
+                placeholder="sam@example.com"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="formrow mt12">
+            <div class="field">
+              <label for="ctopic">Topic</label>
+              <!-- Topic options help categorize the user's message -->
+              <select id="ctopic">
+                <option value="Website feedback">Website feedback</option>
+                <option value="Join the community">Join the community</option>
+                <option value="Donate / fundraising">
+                  Donate / fundraising
+                </option>
+                <option value="Report content">Report content</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cmessage">Message</label>
+              <textarea
+                id="cmessage"
+                placeholder="Minimum 12 characters..."
+                required
+              ></textarea>
+            </div>
+          </div>
+          <!-- Success or error feedback is displayed here after form validation -->
+          <p id="contactresult" class="help mt8" aria-live="polite"></p>
+
+          <div class="herocta">
+            <button class="btn primary" type="submit">Send</button>
+            <a class="btn" href="fundraising.html">Go to donate</a>
+          </div>
+        </form>
+      </section>
+    </main>
+    <!-- Shared footer with quick links, page label, and legal/community information -->
+    <footer class="footer">
+      <div class="container">
+        <hr class="sep" />
+        <div class="rowbetween">
+          <span class="muted">© 2026 LuxeFund Community</span>
+          <span class="muted">Contact page</span>
+        </div>
+      </div>
+    </footer>
+    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+    <div
+      id="toastwrap"
+      class="toastwrap"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/contact.js" defer></script>
+  </body>
+</html>

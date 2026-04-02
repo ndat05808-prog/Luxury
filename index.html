@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="LuxeFund Community - A luxury pre-loved fashion marketplace with transparent fundraising. Shop curated items and support scholarships & community work."
+    />
+    <meta
+      name="keywords"
+      content="luxury fashion, pre-loved, fundraising, sustainable shopping, community, scholarships"
+    />
+    <meta name="author" content="LuxeFund Community" />
+    <meta name="theme-color" content="#0b1220" />
+    <meta name="color-scheme" content="dark light" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="LuxeFund Community - Luxury Fundraising Platform"
+    />
+    <meta
+      property="og:description"
+      content="Shop pre-loved luxury items and support scholarships through transparent fundraising."
+    />
+    <meta property="og:url" content="https://luxefund.community/" />
+    <meta property="og:image" content="./assets/img/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LuxeFund Community" />
+    <meta
+      name="twitter:description"
+      content="Shop pre-loved luxury items and support scholarships."
+    />
+    <meta name="twitter:image" content="./assets/img/og-image.jpg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="format-detection" content="telephone=no" />
+    <title>Home • LuxeFund Community</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="canonical" href="https://luxefund.community/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  </head>
+  <body>
+    <!-- Skip link improves keyboard accessibility by allowing users to jump directly to the main content -->
+    <a class="skiplink" href="#main">Skip to content</a>
+    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+    <header class="siteheader">
+      <div class="container">
+        <div class="headerrow">
+          <a
+            class="brand"
+            href="index.html"
+            aria-label="LuxeFund Community - Home"
+          >
+            <div class="brandbadge" aria-hidden="true"></div>
+            <div class="brandname">
+              <strong>LuxeFund Community</strong>
+              <span>Luxury lovers • Fundraising</span>
+            </div>
+          </a>
+
+          <div class="navwrap">
+            <a
+              class="btn ghost"
+              href="shop.html"
+              aria-label="Open fundraising shop"
+            >
+              Cart
+              <span id="cartcount" class="badge" aria-label="Items in cart"
+                >0</span
+              >
+            </a>
+            <button
+              id="themetoggle"
+              class="btn ghost"
+              type="button"
+              aria-pressed="false"
+            >
+              Light mode
+            </button>
+            <button
+              id="navtoggle"
+              class="navtoggle"
+              type="button"
+              aria-controls="nav"
+              aria-expanded="false"
+            >
+              Menu
+            </button>
+          </div>
+        </div>
+        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+        <nav id="nav" class="nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="shop.html">Fundraising Shop</a>
+          <a href="fundraising.html">Donate</a>
+          <a href="events.html">Events</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Main page content starts here -->
+    <main id="main" class="container">
+      <!-- Hero section introduces the website purpose and provides the main calls to action -->
+      <section class="hero" aria-label="Hero">
+        <div class="heroleft">
+          <span class="badge">Community • Pre-loved • Fundraising</span>
+          <h1 class="h1">
+            A clean luxury community that raises funds - simple & transparent.
+          </h1>
+          <p class="lead">
+            LuxeFund Community is a <strong>student</strong> website concept.
+            People can browse <strong>pre-loved luxury</strong> items and donate
+            to support scholarships / community work.
+          </p>
+
+          <div class="herocta">
+            <a class="btn primary" href="shop.html">Browse the shop</a>
+            <a class="btn" href="fundraising.html">Donate now</a>
+          </div>
+          <!-- Quick statistics highlight fundraising progress, product count, and site information -->
+          <div class="stats" aria-label="Stats">
+            <div class="stat">
+              <strong id="home_raised">0 ₫</strong>
+              <span>Total raised</span>
+            </div>
+            <div class="stat">
+              <strong>20</strong>
+              <span>Products</span>
+            </div>
+            <div class="stat">
+              <strong>6</strong>
+              <span>Pages</span>
+            </div>
+          </div>
+
+          <p id="home_updated" class="help mt12">Last updated: —</p>
+        </div>
+        <!-- Hero media area uses video to make the homepage more engaging -->
+        <div class="heroright" aria-label="Hero image">
+          <video width="600" controls autoplay muted loop>
+            <source src="./assets/img/video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+      <!-- This section explains the basic user journey: browse items, support the fund, and join the community -->
+      <section class="section" aria-label="How it works">
+        <div class="sectionhead">
+          <h2>How it works</h2>
+          <p>Simple UI, professional feel.</p>
+        </div>
+
+        <div class="cardgrid">
+          <article class="card">
+            <img src="./assets/img/prolo.jpg" alt="Pre-loved items" />
+            <div class="cardbody">
+              <h3 class="cardtitle">1) Pick an item</h3>
+              <p class="cardmeta">Filter by brand • condition • price.</p>
+              <p class="muted">
+                Each product shows a % contribution to the fund.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./assets/img/people.jpg" alt="Fundraising community" />
+            <div class="cardbody">
+              <h3 class="cardtitle">2) Funds update instantly</h3>
+              <p class="cardmeta">Uses localStorage.</p>
+              <p class="muted">
+                Great for explaining transparency in your presentation.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <img src="./assets/img/gr.jpg" alt="Community members" />
+            <div class="cardbody">
+              <h3 class="cardtitle">3) Build a community</h3>
+              <p class="cardmeta">Posts • events • care tips.</p>
+              <p class="muted">A mini community board is included.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- Preview cards introduce upcoming community activities and encourage users to visit the Events page -->
+      <section class="section" aria-label="Upcoming events preview">
+        <div class="sectionhead">
+          <h2>Upcoming events</h2>
+          <p>More details in the Events page.</p>
+        </div>
+
+        <div class="cardgrid">
+          <article class="card">
+            <div class="cardbody">
+              <h3 class="cardtitle">Workshop: Authenticity basics</h3>
+              <p class="cardmeta">Sat • 14:00 • Campus club room</p>
+              <p class="muted">
+                Educational checklist: materials, stitching, tags, receipts,
+                serial patterns.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cardbody">
+              <h3 class="cardtitle">Swap Day: Pre-loved exchange</h3>
+              <p class="cardmeta">Sun • 09:00 • Library hall</p>
+              <p class="muted">
+                Bring one item, swap one item. Optional donation for the fund.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="cardbody">
+              <h3 class="cardtitle">Livestream: Minimal styling</h3>
+              <p class="cardmeta">Online • 20:30</p>
+              <p class="muted">A simple “capsule wardrobe” session.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+    <!-- Shared footer with quick links, page label, and legal/community information -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footerrow">
+          <div class="footercol">
+            <strong class="footerstrong">LuxeFund Community</strong>
+            <p class="muted mt8 mb0">
+              Community platform focused on transparent fundraising.
+            </p>
+            <p class="muted mt8 mb0">
+              Purpose: encourage pre-loved reuse and transparent community
+              fundraising.
+            </p>
+          </div>
+
+          <div class="footercol small">
+            <strong class="footerstrong">Quick links</strong>
+            <div class="footerlinks">
+              <a class="btn ghost" href="fundraising.html">Donate</a>
+              <a class="btn ghost" href="shop.html">Shop</a>
+            </div>
+          </div>
+
+          <div class="footercol small">
+            <strong class="footerstrong">Legal note</strong>
+            <p class="muted mt8 mb0">
+              Brand names (Gucci, Dior, Balenciaga, Alexander McQueen, etc.)
+              belong to their respective owners. No logos are displayed.
+            </p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+        <div class="rowbetween">
+          <span class="muted">© 2026 LuxeFund Community</span>
+        </div>
+      </div>
+    </footer>
+    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+    <div
+      id="toastwrap"
+      class="toastwrap"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/index.js" defer></script>
+  </body>
+</html>
