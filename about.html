@@ -12,6 +12,7 @@
       content="about, mission, community fundraising, transparency, luxury fashion"
     />
     <meta name="author" content="LuxeFund Community" />
+    <meta name="theme-color" content="#080e1a" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="About LuxeFund Community" />
     <meta
@@ -20,14 +21,13 @@
     />
     <meta property="og:url" content="https://luxefund.community/about.html" />
     <meta name="robots" content="index, follow" />
-    <title>About • LuxeFund Community</title>
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>About &bull; LuxeFund Community</title>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="canonical" href="https://luxefund.community/about.html" />
   </head>
   <body>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
     <a class="skiplink" href="#main">Skip to content</a>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+
     <header class="siteheader">
       <div class="container">
         <div class="headerrow">
@@ -39,7 +39,7 @@
             <div class="brandbadge" aria-hidden="true"></div>
             <div class="brandname">
               <strong>LuxeFund Community</strong>
-              <span>Luxury lovers • Fundraising</span>
+              <span>Luxury lovers &bull; Fundraising</span>
             </div>
           </a>
 
@@ -73,7 +73,7 @@
             </button>
           </div>
         </div>
-        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+
         <nav id="nav" class="nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
@@ -84,9 +84,8 @@
         </nav>
       </div>
     </header>
-    <!-- Main page content starts here -->
+
     <main id="main" class="container">
-      <!-- About section explains the purpose, mission, and intended audience of the website -->
       <section class="section" aria-label="About">
         <div class="sectionhead">
           <h2>About</h2>
@@ -95,10 +94,10 @@
         <p class="muted">
           LuxeFund Community connects a
           <strong>luxury fashion community</strong> with
-          <strong>fundraising</strong>. People can “shop” pre-loved items or
+          <strong>fundraising</strong>. People can &ldquo;shop&rdquo; pre-loved items or
           donate directly.
         </p>
-        <!-- Content cards present the website mission, principles, and target audience in a clear layout -->
+
         <div class="cardgrid mt12">
           <article class="card">
             <div class="cardbody">
@@ -114,7 +113,7 @@
           <article class="card">
             <div class="cardbody">
               <h3 class="cardtitle">Principles</h3>
-              <p class="cardmeta">Respect • Transparency • No counterfeits.</p>
+              <p class="cardmeta">Respect &bull; Transparency &bull; No counterfeits.</p>
               <p class="muted">
                 Verification, legal compliance, and transparency come first.
               </p>
@@ -133,7 +132,7 @@
           </article>
         </div>
       </section>
-      <!-- Transparency section explains how donations are generated and how totals are tracked across pages -->
+
       <section class="section" aria-label="Transparency">
         <div class="sectionhead">
           <h2>Fund transparency</h2>
@@ -173,7 +172,7 @@
           Backend reporting can be added for audit-ready records.
         </p>
       </section>
-      <!-- FAQ section answers common questions about branding, data updates, and website customization -->
+
       <section class="section" aria-label="FAQ">
         <div class="sectionhead">
           <h2>FAQ</h2>
@@ -211,24 +210,41 @@
         </div>
       </section>
     </main>
-    <!-- Shared footer with quick links, page label, and legal/community information -->
+
     <footer class="footer">
       <div class="container">
-        <hr class="sep" />
-        <div class="rowbetween">
-          <span class="muted">© 2026 LuxeFund Community</span>
+        <div class="footerrow">
+          <div class="footercol">
+            <strong class="footerstrong">LuxeFund Community</strong>
+            <p class="muted mt8 mb0">
+              Community platform focused on transparent fundraising.
+            </p>
+          </div>
+
+          <div class="footercol">
+            <strong class="footerstrong">Quick links</strong>
+            <div class="footerlinks">
+              <a class="btn ghost" href="fundraising.html">Donate</a>
+              <a class="btn ghost" href="shop.html">Shop</a>
+              <a class="btn ghost" href="events.html">Events</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footerbottom">
+          <span class="muted">&copy; 2026 LuxeFund Community</span>
           <span class="muted">About page</span>
         </div>
       </div>
     </footer>
-    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+
     <div
       id="toastwrap"
       class="toastwrap"
       aria-live="polite"
       aria-atomic="true"
     ></div>
-    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+
     <script src="./assets/js/main.js" defer></script>
   </body>
 </html>

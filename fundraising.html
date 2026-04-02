@@ -12,8 +12,9 @@
       content="donate, fundraising, scholarships, community support, transparent"
     />
     <meta name="author" content="LuxeFund Community" />
+    <meta name="theme-color" content="#080e1a" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Donate • LuxeFund Community" />
+    <meta property="og:title" content="Donate &bull; LuxeFund Community" />
     <meta
       property="og:description"
       content="Support our transparent fundraising for scholarships and community initiatives."
@@ -23,14 +24,13 @@
       content="https://luxefund.community/fundraising.html"
     />
     <meta name="robots" content="index, follow" />
-    <title>Donate • LuxeFund Community</title>
+    <title>Donate &bull; LuxeFund Community</title>
     <link rel="stylesheet" href="./assets/css/styles.css" />
     <link rel="canonical" href="https://luxefund.community/fundraising.html" />
   </head>
   <body>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
     <a class="skiplink" href="#main">Skip to content</a>
-    <!-- Site header containing the brand identity, cart shortcut, theme toggle, and menu button -->
+
     <header class="siteheader">
       <div class="container">
         <div class="headerrow">
@@ -42,7 +42,7 @@
             <div class="brandbadge" aria-hidden="true"></div>
             <div class="brandname">
               <strong>LuxeFund Community</strong>
-              <span>Luxury lovers • Fundraising</span>
+              <span>Luxury lovers &bull; Fundraising</span>
             </div>
           </a>
 
@@ -76,7 +76,7 @@
             </button>
           </div>
         </div>
-        <!-- Main navigation uses relative links so the website works correctly when opened locally -->
+
         <nav id="nav" class="nav" aria-label="Main navigation">
           <a href="index.html">Home</a>
           <a href="about.html">About</a>
@@ -87,9 +87,8 @@
         </nav>
       </div>
     </header>
-    <!-- Main page content starts here -->
+
     <main id="main" class="container">
-      <!-- Fundraising summary section shows the current total, target amount, and progress bar -->
       <section class="section" aria-label="Fundraising summary">
         <div class="sectionhead">
           <h2>Donate</h2>
@@ -103,12 +102,12 @@
               <p class="cardmeta">Updates instantly.</p>
 
               <div class="rowbetween mt12">
-                <strong id="raisedtotal">0 ₫</strong>
+                <strong id="raisedtotal">0 &#8363;</strong>
                 <span class="badge"
-                  >Monthly goal: <span id="goal">0 ₫</span></span
+                  >Monthly goal: <span id="goal">0 &#8363;</span></span
                 >
               </div>
-              <!-- Visual progress bar helps users understand how close the campaign is to its goal -->
+
               <div class="progress mt12" aria-label="Progress">
                 <div id="progressbar"></div>
               </div>
@@ -123,15 +122,15 @@
               <h3 class="cardtitle">What the fund supports</h3>
               <p class="cardmeta">Simple explanation.</p>
               <p class="muted">
-                • Student scholarships<br />
-                • Workshops and learning sessions<br />
-                • Community support activities
+                &bull; Student scholarships<br />
+                &bull; Workshops and learning sessions<br />
+                &bull; Community support activities
               </p>
             </div>
           </article>
         </div>
       </section>
-      <!-- Donation form collects the donor name, amount, and optional message with client-side validation -->
+
       <section class="section" aria-label="Donation form">
         <div class="sectionhead">
           <h2>Make a donation</h2>
@@ -162,7 +161,7 @@
                 placeholder="e.g., 50000"
                 required
               />
-              <span class="help">Minimum 10,000₫.</span>
+              <span class="help">Minimum 10,000&#8363;.</span>
             </div>
           </div>
 
@@ -174,7 +173,7 @@
               community-focused.</span
             >
           </div>
-          <!-- Validation messages are displayed here so users receive immediate feedback -->
+
           <p id="donateerror" class="error mt8" aria-live="polite"></p>
 
           <div class="herocta">
@@ -183,36 +182,33 @@
           </div>
         </form>
       </section>
-      <!-- Recent donors section displays the latest donation entries stored in localStorage -->
+
       <section class="section" aria-label="Recent donors">
         <div class="sectionhead">
           <h2>Recent donors</h2>
           <p>Shows the latest 6 entries.</p>
         </div>
-        <!-- Donor cards are generated dynamically by fundraising.js -->
-        <div id="donorlist" class="cardgrid">
-          <!-- fundraising.js renders -->
-        </div>
+
+        <div id="donorlist" class="cardgrid"></div>
       </section>
     </main>
-    <!-- Shared footer with quick links, page label, and legal/community information -->
+
     <footer class="footer">
       <div class="container">
-        <hr class="sep" />
-        <div class="rowbetween">
-          <span class="muted">© 2026 LuxeFund Community</span>
+        <div class="footerbottom">
+          <span class="muted">&copy; 2026 LuxeFund Community</span>
           <span class="muted">Donate page</span>
         </div>
       </div>
     </footer>
-    <!-- Toast container used to show short feedback messages triggered by JavaScript -->
+
     <div
       id="toastwrap"
       class="toastwrap"
       aria-live="polite"
       aria-atomic="true"
     ></div>
-    <!-- External JavaScript files are loaded with defer so the HTML can render before scripts run -->
+
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/fundraising.js" defer></script>
   </body>
