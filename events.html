@@ -155,6 +155,143 @@
       aria-atomic="true"
     ></div>
 
+    <div
+      id="authmodal"
+      class="modalbackdrop authmodalbackdrop"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Login or register"
+    >
+      <div class="modal authmodal">
+        <div class="modalheader">
+          <h3 id="authmodaltitle">Welcome back</h3>
+          <button
+            id="authclose"
+            class="modalclose"
+            type="button"
+            aria-label="Close authentication"
+          >
+            Close
+          </button>
+        </div>
+
+        <div class="authtabs" role="tablist" aria-label="Authentication tabs">
+          <button
+            id="authtablogin"
+            class="btn primary"
+            type="button"
+            role="tab"
+            aria-selected="true"
+          >
+            Login
+          </button>
+          <button
+            id="authtabregister"
+            class="btn"
+            type="button"
+            role="tab"
+            aria-selected="false"
+          >
+            Register
+          </button>
+        </div>
+
+        <div class="authbody">
+          <div
+            id="authloggedin"
+            class="authpanel authloggedin hidden"
+            aria-live="polite"
+          >
+            <p class="muted mb8">You are logged in as</p>
+            <h4 id="authwhoami" class="cardtitle mt0">&mdash;</h4>
+            <p id="authwhoemail" class="cardmeta">&mdash;</p>
+            <div class="herocta mt12">
+              <button id="authlogout" class="btn primary" type="button">
+                Log out
+              </button>
+            </div>
+          </div>
+
+          <form id="authloginform" class="authpanel" novalidate>
+            <div class="field">
+              <label for="loginemail">Email</label>
+              <input
+                id="loginemail"
+                type="email"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div class="field mt12">
+              <label for="loginpassword">Password</label>
+              <input
+                id="loginpassword"
+                type="password"
+                placeholder="Minimum 6 characters"
+                required
+              />
+            </div>
+
+            <p class="help mt8">This is a front-end demo using localStorage.</p>
+
+            <div class="herocta mt12">
+              <button class="btn primary" type="submit">Login</button>
+            </div>
+          </form>
+
+          <form id="authregisterform" class="authpanel hidden" novalidate>
+            <div class="field">
+              <label for="registername">Full name</label>
+              <input
+                id="registername"
+                type="text"
+                placeholder="e.g., Alex Nguyen"
+                required
+              />
+            </div>
+
+            <div class="field mt12">
+              <label for="registeremail">Email</label>
+              <input
+                id="registeremail"
+                type="email"
+                placeholder="alex@example.com"
+                required
+              />
+            </div>
+
+            <div class="field mt12">
+              <label for="registerpassword">Password</label>
+              <input
+                id="registerpassword"
+                type="password"
+                placeholder="Minimum 6 characters"
+                required
+              />
+            </div>
+
+            <div class="field mt12">
+              <label for="registerconfirm">Confirm password</label>
+              <input
+                id="registerconfirm"
+                type="password"
+                placeholder="Repeat your password"
+                required
+              />
+            </div>
+
+            <div class="herocta mt12">
+              <button class="btn primary" type="submit">Create account</button>
+            </div>
+          </form>
+
+          <p id="authmessage" class="help mt12" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+
     <script src="./assets/js/main.js" defer></script>
     <script src="./assets/js/events.js" defer></script>
   </body>
