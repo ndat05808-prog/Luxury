@@ -319,6 +319,11 @@
       loggedIn || view !== "register",
     );
 
+    const socialBtns = qs(".social-buttons");
+    const divider = qs(".auth-divider");
+    if (socialBtns) socialBtns.classList.toggle("hidden", loggedIn);
+    if (divider) divider.classList.toggle("hidden", loggedIn);
+
     if (authEls.loginTab) {
       authEls.loginTab.classList.toggle(
         "primary",
@@ -462,6 +467,59 @@
     window.addEventListener("luxefund_auth_changed", () => {
       renderAuthTrigger();
       switchAuthView("login");
+    });
+
+    /* Social login (demo simulation) */
+    qs("#auth-google")?.addEventListener("click", () => {
+      const name = "Google User";
+      const email = "user@gmail.com";
+      const existing = findUserByEmail(email);
+      if (!existing) {
+        const users = getUsers();
+        const newUser = {
+          id: "u_g_" + Date.now(),
+          name,
+          email,
+          password: "__social_google__",
+          provider: "google",
+          createdAt: new Date().toISOString(),
+        };
+        users.push(newUser);
+        setUsers(users);
+        setCurrentUser({ id: newUser.id, name: newUser.name, email: newUser.email });
+      } else {
+        setCurrentUser({ id: existing.id, name: existing.name, email: existing.email });
+      }
+      renderAuthTrigger();
+      switchAuthView("login");
+      toast("Logged in with Google.");
+      setTimeout(closeAuthModal, 500);
+    });
+
+    qs("#auth-facebook")?.addEventListener("click", () => {
+      const name = "Facebook User";
+      const email = "user@facebook.com";
+      const existing = findUserByEmail(email);
+      if (!existing) {
+        const users = getUsers();
+        const newUser = {
+          id: "u_f_" + Date.now(),
+          name,
+          email,
+          password: "__social_facebook__",
+          provider: "facebook",
+          createdAt: new Date().toISOString(),
+        };
+        users.push(newUser);
+        setUsers(users);
+        setCurrentUser({ id: newUser.id, name: newUser.name, email: newUser.email });
+      } else {
+        setCurrentUser({ id: existing.id, name: existing.name, email: existing.email });
+      }
+      renderAuthTrigger();
+      switchAuthView("login");
+      toast("Logged in with Facebook.");
+      setTimeout(closeAuthModal, 500);
     });
   };
 
