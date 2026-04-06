@@ -1,7 +1,6 @@
 (() => {
   "use strict";
 
-  // DOM Helper Functions
   const qs = (sel, root = document) => {
     try {
       return root.querySelector(sel);
@@ -20,7 +19,6 @@
     }
   };
 
-  // LocalStorage Wrapper with Error Handling
   const storage = {
     get(key, fallback) {
       try {
@@ -36,11 +34,8 @@
         localStorage.setItem(key, JSON.stringify(value));
       } catch (e) {
         console.error(`Failed to write to localStorage: ${key}`, e);
-        // Handle quota exceeded error
         if (e.name === "QuotaExceededError") {
-          console.warn(
-            "LocalStorage quota exceeded - old data may not be saved",
-          );
+          console.warn("LocalStorage quota exceeded - data may not be saved");
         }
       }
     },
@@ -53,7 +48,6 @@
     },
   };
 
-  // Number Formatting
   const formatVND = (n) => {
     try {
       return Number(n || 0).toLocaleString("vi-VN") + " ₫";
@@ -63,7 +57,6 @@
     }
   };
 
-  // Toast Notification with Improved Animation
   const toast = (message) => {
     const wrap = qs("#toastwrap");
     if (!wrap) return;
@@ -76,7 +69,6 @@
       el.setAttribute("aria-live", "polite");
       wrap.appendChild(el);
 
-      // Use requestAnimationFrame for smoother cleanup
       setTimeout(() => {
         el.style.opacity = "0";
         el.style.transform = "translateY(6px)";
@@ -93,10 +85,108 @@
     }
   };
 
-  // Expose Global API
-  window.LuxeFund = { qs, qsa, storage, formatVND, toast };
+  const sanitizeText = (value, max = 120) =>
+    String(value ?? "")
+      .trim()
+      .replace(/\s+/g, " ")
+      .slice(0, max);
 
-  // Mark Active Navigation Link
+  const usersKey = "luxefund_users";
+  const currentUserKey = "luxefund_current_user";
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const getUsers = () => storage.get(usersKey, []);
+  const setUsers = (users) => storage.set(usersKey, users);
+  const getCurrentUser = () => storage.get(currentUserKey, null);
+  const setCurrentUser = (user) => {
+    if (user) storage.set(currentUserKey, user);
+    else storage.remove(currentUserKey);
+    window.dispatchEvent(new Event("luxefund_auth_changed"));
+  };
+
+  const findUserByEmail = (email) => {
+    const safeEmail = sanitizeText(email, 160).toLowerCase();
+    return (
+      getUsers().find((user) => user.email.toLowerCase() === safeEmail) || null
+    );
+  };
+
+  const registerUser = ({ name, email, password, confirmPassword }) => {
+    const safeName = sanitizeText(name, 80);
+    const safeEmail = sanitizeText(email, 160).toLowerCase();
+    const safePassword = String(password ?? "").trim();
+    const safeConfirm = String(confirmPassword ?? "").trim();
+
+    if (safeName.length < 2)
+      return { ok: false, message: "Name must be at least 2 characters." };
+    if (!emailPattern.test(safeEmail))
+      return { ok: false, message: "Please enter a valid email address." };
+    if (safePassword.length < 6)
+      return { ok: false, message: "Password must be at least 6 characters." };
+    if (safePassword !== safeConfirm)
+      return { ok: false, message: "Passwords do not match." };
+    if (findUserByEmail(safeEmail))
+      return { ok: false, message: "This email is already registered." };
+
+    const users = getUsers();
+    const newUser = {
+      id: "u_" + Date.now(),
+      name: safeName,
+      email: safeEmail,
+      password: safePassword,
+      createdAt: new Date().toISOString(),
+    };
+
+    users.push(newUser);
+    setUsers(users);
+    setCurrentUser({
+      id: newUser.id,
+      name: newUser.name,
+      email: newUser.email,
+    });
+
+    return { ok: true, message: "Account created successfully." };
+  };
+
+  const loginUser = ({ email, password }) => {
+    const safeEmail = sanitizeText(email, 160).toLowerCase();
+    const safePassword = String(password ?? "").trim();
+
+    if (!emailPattern.test(safeEmail))
+      return { ok: false, message: "Please enter a valid email address." };
+    if (safePassword.length < 6)
+      return { ok: false, message: "Password must be at least 6 characters." };
+
+    const user = findUserByEmail(safeEmail);
+    if (!user || user.password !== safePassword) {
+      return { ok: false, message: "Incorrect email or password." };
+    }
+
+    setCurrentUser({ id: user.id, name: user.name, email: user.email });
+    return { ok: true, message: "Logged in successfully." };
+  };
+
+  const logoutUser = () => {
+    setCurrentUser(null);
+    toast("Logged out.");
+  };
+
+  window.LuxeFund = {
+    qs,
+    qsa,
+    storage,
+    formatVND,
+    toast,
+    getCurrentUser,
+    requireAuth(message = "Please log in first.") {
+      const user = getCurrentUser();
+      if (user) return true;
+      toast(message);
+      if (typeof openAuthModal === "function") openAuthModal("login");
+      return false;
+    },
+  };
+
   const markActiveLink = () => {
     try {
       const path = (
@@ -104,18 +194,14 @@
       ).toLowerCase();
       qsa(".nav a").forEach((a) => {
         const href = (a.getAttribute("href") || "").toLowerCase();
-        if (href === path) {
-          a.setAttribute("aria-current", "page");
-        } else {
-          a.removeAttribute("aria-current");
-        }
+        if (href === path) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
       });
     } catch (e) {
       console.error("Error marking active link:", e);
     }
   };
 
-  // Mobile Navigation Setup
   const setupMobileNav = () => {
     try {
       const btn = qs("#navtoggle");
@@ -125,16 +211,10 @@
       btn.addEventListener("click", () => {
         const isOpen = nav.classList.toggle("open");
         btn.setAttribute("aria-expanded", String(isOpen));
-
-        // Trap focus in mobile nav when open
-        if (isOpen) {
-          document.addEventListener("click", closeOnOutsideClick);
-        } else {
-          document.removeEventListener("click", closeOnOutsideClick);
-        }
+        if (isOpen) document.addEventListener("click", closeOnOutsideClick);
+        else document.removeEventListener("click", closeOnOutsideClick);
       });
 
-      // Close nav when link is clicked
       nav.addEventListener("click", (e) => {
         if (e.target.tagName === "A") {
           nav.classList.remove("open");
@@ -156,16 +236,11 @@
     }
   };
 
-  // Theme Management
   const setupTheme = () => {
     try {
       const btn = qs("#themetoggle");
       const saved = storage.get("luxefund_theme", "dark");
-
-      if (saved === "light") {
-        document.body.classList.add("light");
-      }
-
+      if (saved === "light") document.body.classList.add("light");
       if (!btn) return;
 
       const sync = () => {
@@ -175,7 +250,6 @@
       };
 
       sync();
-
       btn.addEventListener("click", () => {
         document.body.classList.toggle("light");
         const theme = document.body.classList.contains("light")
@@ -190,7 +264,6 @@
     }
   };
 
-  // Update Cart Count
   const updateCartCount = () => {
     try {
       const cart = storage.get("luxefund_cart", []);
@@ -205,15 +278,200 @@
     }
   };
 
-  // Initialization
+  const authEls = {
+    trigger: null,
+    modal: null,
+    close: null,
+    title: null,
+    loginTab: null,
+    registerTab: null,
+    loginForm: null,
+    registerForm: null,
+    message: null,
+    loggedInPanel: null,
+    whoAmI: null,
+    whoEmail: null,
+    logout: null,
+  };
+
+  const setAuthMessage = (message = "", kind = "help") => {
+    if (!authEls.message) return;
+    authEls.message.textContent = message;
+    authEls.message.className = `${kind} mt12`;
+  };
+
+  const switchAuthView = (view = "login") => {
+    const currentUser = getCurrentUser();
+
+    if (authEls.title) {
+      authEls.title.textContent = currentUser
+        ? "Your account"
+        : view === "register"
+          ? "Create account"
+          : "Welcome back";
+    }
+
+    const loggedIn = Boolean(currentUser);
+    authEls.loggedInPanel?.classList.toggle("hidden", !loggedIn);
+    authEls.loginForm?.classList.toggle("hidden", loggedIn || view !== "login");
+    authEls.registerForm?.classList.toggle(
+      "hidden",
+      loggedIn || view !== "register",
+    );
+
+    if (authEls.loginTab) {
+      authEls.loginTab.classList.toggle(
+        "primary",
+        !loggedIn && view === "login",
+      );
+      authEls.loginTab.setAttribute(
+        "aria-selected",
+        String(!loggedIn && view === "login"),
+      );
+    }
+    if (authEls.registerTab) {
+      authEls.registerTab.classList.toggle(
+        "primary",
+        !loggedIn && view === "register",
+      );
+      authEls.registerTab.setAttribute(
+        "aria-selected",
+        String(!loggedIn && view === "register"),
+      );
+    }
+    if (authEls.loginTab && loggedIn)
+      authEls.loginTab.classList.remove("primary");
+    if (authEls.registerTab && loggedIn)
+      authEls.registerTab.classList.remove("primary");
+
+    if (loggedIn) {
+      authEls.whoAmI && (authEls.whoAmI.textContent = currentUser.name);
+      authEls.whoEmail && (authEls.whoEmail.textContent = currentUser.email);
+      setAuthMessage(
+        "You can stay signed in with localStorage on this browser.",
+      );
+    } else {
+      setAuthMessage("");
+    }
+  };
+
+  function openAuthModal(view = "login") {
+    if (!authEls.modal) return;
+    authEls.modal.classList.add("open");
+    authEls.modal.setAttribute("aria-hidden", "false");
+    switchAuthView(view);
+
+    if (getCurrentUser()) return;
+    if (view === "register") qs("#registername")?.focus();
+    else qs("#loginemail")?.focus();
+  }
+
+  const closeAuthModal = () => {
+    if (!authEls.modal) return;
+    authEls.modal.classList.remove("open");
+    authEls.modal.setAttribute("aria-hidden", "true");
+    setAuthMessage("");
+  };
+
+  const renderAuthTrigger = () => {
+    const user = getCurrentUser();
+    if (!authEls.trigger) return;
+    authEls.trigger.textContent = user
+      ? `Hi, ${user.name.split(" ")[0]}`
+      : "Login / Register";
+    authEls.trigger.setAttribute(
+      "aria-label",
+      user
+        ? `Open account panel for ${user.name}`
+        : "Open login or register dialog",
+    );
+  };
+
+  const setupAuth = () => {
+    authEls.trigger = qs("#authtrigger");
+    authEls.modal = qs("#authmodal");
+    authEls.close = qs("#authclose");
+    authEls.title = qs("#authmodaltitle");
+    authEls.loginTab = qs("#authtablogin");
+    authEls.registerTab = qs("#authtabregister");
+    authEls.loginForm = qs("#authloginform");
+    authEls.registerForm = qs("#authregisterform");
+    authEls.message = qs("#authmessage");
+    authEls.loggedInPanel = qs("#authloggedin");
+    authEls.whoAmI = qs("#authwhoami");
+    authEls.whoEmail = qs("#authwhoemail");
+    authEls.logout = qs("#authlogout");
+
+    renderAuthTrigger();
+    switchAuthView("login");
+
+    authEls.trigger?.addEventListener("click", () => openAuthModal("login"));
+    authEls.close?.addEventListener("click", closeAuthModal);
+    authEls.loginTab?.addEventListener("click", () => switchAuthView("login"));
+    authEls.registerTab?.addEventListener("click", () =>
+      switchAuthView("register"),
+    );
+    authEls.logout?.addEventListener("click", () => {
+      logoutUser();
+      switchAuthView("login");
+      renderAuthTrigger();
+      closeAuthModal();
+    });
+
+    authEls.modal?.addEventListener("click", (e) => {
+      if (e.target === authEls.modal) closeAuthModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && authEls.modal?.classList.contains("open"))
+        closeAuthModal();
+    });
+
+    authEls.loginForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const result = loginUser({
+        email: qs("#loginemail")?.value,
+        password: qs("#loginpassword")?.value,
+      });
+      setAuthMessage(result.message, result.ok ? "success" : "error");
+      if (!result.ok) return;
+      renderAuthTrigger();
+      switchAuthView("login");
+      authEls.loginForm.reset();
+      toast("Logged in successfully.");
+      setTimeout(closeAuthModal, 500);
+    });
+
+    authEls.registerForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const result = registerUser({
+        name: qs("#registername")?.value,
+        email: qs("#registeremail")?.value,
+        password: qs("#registerpassword")?.value,
+        confirmPassword: qs("#registerconfirm")?.value,
+      });
+      setAuthMessage(result.message, result.ok ? "success" : "error");
+      if (!result.ok) return;
+      renderAuthTrigger();
+      switchAuthView("login");
+      authEls.registerForm.reset();
+      toast("Account created and logged in.");
+      setTimeout(closeAuthModal, 700);
+    });
+
+    window.addEventListener("luxefund_auth_changed", () => {
+      renderAuthTrigger();
+      switchAuthView("login");
+    });
+  };
+
   const init = () => {
     try {
       markActiveLink();
       setupMobileNav();
       setupTheme();
       updateCartCount();
-
-      // Listen for cart changes from other pages
+      setupAuth();
       window.addEventListener("luxefund_cart_changed", updateCartCount);
       window.addEventListener("storage", updateCartCount);
     } catch (e) {
@@ -221,7 +479,6 @@
     }
   };
 
-  // Start when DOM is ready
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
