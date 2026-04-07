@@ -245,8 +245,18 @@
 
       const sync = () => {
         const isLight = document.body.classList.contains("light");
-        btn.textContent = isLight ? "Dark mode" : "Light mode";
+        btn.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = isLight ? "assets/img/moon.png" : "assets/img/sun.png";
+        img.alt = isLight ? "Dark mode" : "Light mode";
+        img.style.width = "24px";
+        img.style.height = "24px";
+        btn.appendChild(img);
         btn.setAttribute("aria-pressed", String(isLight));
+        btn.setAttribute(
+          "aria-label",
+          isLight ? "Switch to dark mode" : "Switch to light mode",
+        );
       };
 
       sync();
@@ -486,9 +496,17 @@
         };
         users.push(newUser);
         setUsers(users);
-        setCurrentUser({ id: newUser.id, name: newUser.name, email: newUser.email });
+        setCurrentUser({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+        });
       } else {
-        setCurrentUser({ id: existing.id, name: existing.name, email: existing.email });
+        setCurrentUser({
+          id: existing.id,
+          name: existing.name,
+          email: existing.email,
+        });
       }
       renderAuthTrigger();
       switchAuthView("login");
@@ -512,9 +530,17 @@
         };
         users.push(newUser);
         setUsers(users);
-        setCurrentUser({ id: newUser.id, name: newUser.name, email: newUser.email });
+        setCurrentUser({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+        });
       } else {
-        setCurrentUser({ id: existing.id, name: existing.name, email: existing.email });
+        setCurrentUser({
+          id: existing.id,
+          name: existing.name,
+          email: existing.email,
+        });
       }
       renderAuthTrigger();
       switchAuthView("login");
